@@ -29,7 +29,7 @@ npm run build
 
 ## 실행 환경과 배포
 
-기존 운영 환경은 ChatGPT Sites의 Cloudflare Worker와 R2 저장소입니다. `BUCKET` R2 바인딩을 연결해야 합니다. 배포는 Sites의 소스 동기화·빌드 아카이브·버전 게시 절차로 진행합니다. 이 GitHub 저장소 업로드 자체는 운영 사이트를 재배포하지 않습니다.
+현재 운영 환경은 ChatGPT Sites의 Cloudflare Worker와 Supabase PostgreSQL입니다. 이전 기록 보존을 위해 R2도 유지합니다. `BUCKET` R2 바인딩을 연결해야 합니다. 배포는 Sites의 소스 동기화·빌드 아카이브·버전 게시 절차로 진행합니다. 이 GitHub 저장소 업로드 자체는 운영 사이트를 재배포하지 않습니다.
 
 다른 프로젝트에 배포할 때 `.openai/hosting.json`의 프로젝트 ID를 새 프로젝트의 실제 ID로 바꾸고 저장소를 별도로 연결하세요. 기존 R2 기록은 이 저장소에 들어 있지 않습니다.
 
@@ -38,6 +38,8 @@ npm run build
 관리 화면은 `/admin`입니다. 현재 관리자 이메일은 `junisean@naver.com`이며 서버의 관리자 검사 함수에서 확인합니다. Sites가 보증하는 `oai-authenticated-user-id`, `oai-authenticated-user-email` 헤더를 사용합니다.
 
 일반 Worker로 옮길 경우 이 헤더를 클라이언트가 임의로 보낼 수 있는 상태로 신뢰하면 안 됩니다. 먼저 신뢰 가능한 인증 계층을 구현하고 관리자 검사와 로그인 경로를 연결해야 합니다. 프런트엔드에서 관리 버튼만 숨기는 방식으로 대체하지 마세요.
+
+Supabase 설정과 이전 절차는 [docs/SUPABASE.md](docs/SUPABASE.md)를 참조하세요.
 
 ## API
 
